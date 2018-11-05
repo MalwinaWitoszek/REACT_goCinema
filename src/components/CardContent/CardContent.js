@@ -13,10 +13,10 @@ const MovieDescription = ({ img, title, releaseDate, desc, ...restProps }) => {
         <header>
           <h3>{title}</h3>
           <p className={styles.releaseDate}>
-            <span>Premiera:</span> {releaseDate} r.>
+            <span>Premiera: </span> {releaseDate} r.
           </p>
         </header>
-        <RunningTime />
+        <RunningTime {...restProps} />
         <p>
           <span>Opis: </span>
           {desc}

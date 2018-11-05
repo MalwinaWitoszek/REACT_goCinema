@@ -30,12 +30,19 @@
   justify-content: flex-start;
   padding-left: 24px;
   overflow: hidden;
-  border: 2px solid green;
+  & * {
+    flex:0;
+  }
+  & *:last-child {
+    flex: 1;
+  }
+
   h3 {
     color: white;
     text-transform: uppercase;
     margin-top: 0;
     font-size: .95rem;
+    line-height: 1.4rem;
     // margin-bottom: 0.35em;
   }
 
