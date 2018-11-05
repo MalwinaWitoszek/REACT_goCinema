@@ -1,0 +1,44 @@
+.container {
+  padding: 5px;
+  border: 1px solid red;
+  position: absolute;
+  display: flex;
+  top: -20px;
+  left: 10px;
+  border-radius: 4px;
+  line-height: 1.5;
+  min-width: 150px;
+  margin: 0;
+  background-color: #2e302d;
+}
+
+.message {
+  font-size: 0.65rem;
+  display: block;
+}
+
+.icon {
+  height: 0.85rem;
+  width: 0.85rem;
+  padding-right: 0.85rem;
+}
+
+.success {
+  border: 1px solid #52c41a;
+  color: lighten(#52c41a, 25%);
+}
+
+.error {
+  border: 1px solid #f5222d;
+  color: lighten(#f5222d, 25%);
+}
+
+.warning {
+  border: 1px solid #faad14;
+  color: lighten(#faad14, 25%);
+}
+
+.info {
+  border: 1px solid #1890ff;
+  color: lighten(#1890ff, 25%);
+}

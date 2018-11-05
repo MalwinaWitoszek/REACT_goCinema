@@ -1,6 +1,5 @@
 import React from "react";
 import RunningTime from "../RunningTime/RunningTime";
-import Button from '../Button/Button'
 import PropTypes from "prop-types";
 import styles from "./CardContent.module.scss";
 
@@ -27,6 +26,16 @@ const CardContent = ({ img, title, releaseDate, desc, ...restProps }) => {
   );
 };
 
-CardContent.propTypes = {};
+CardContent.defaultProps = {
+  title: "brak tytułu",
+  description: "brak opisu"
+};
+
+CardContent.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired
+};
 
 export default CardContent;
