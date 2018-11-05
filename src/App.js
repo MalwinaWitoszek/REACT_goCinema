@@ -35,9 +35,35 @@ const data = [
 
 const App = () => (
     <div className={styles.container}>
-        <Card />
+    {
+        data.map(film => (
+            <Card
+            key={film.id}
+            img={film.img}
+            title={film.title}
+            releaseDate={film.releaseDate}
+            duration={film.duration}
+            desc={film.desc}
+            soldedOut={film.soldedOut}
+            rating={film.rating}
+            />
+        ))
+    }
+
     </div>
 );
 
 
 export default App;
+
+// data.map(film => (
+//     <Card
+//     img={film.img}
+//     title={film.title}
+//     desc={film.desc}
+//     duration={film.duration}
+//     releaseDate={film.releaseDate}
+//     rating={film.rating}
+//     soldedOut={film.soldedOut}
+//     />
+// ))

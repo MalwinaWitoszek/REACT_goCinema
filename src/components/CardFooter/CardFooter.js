@@ -6,6 +6,7 @@ const CardFooter = () => {
   return (
     <div>
       <RatingStars />
+      link
     </div>
   )
 }

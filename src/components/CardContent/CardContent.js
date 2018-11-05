@@ -1,25 +1,26 @@
 import React from "react";
-import RunningTime from '../RunningTime/RunningTime'
+import RunningTime from "../RunningTime/RunningTime";
 import PropTypes from "prop-types";
 import styles from "./CardContent.module.scss";
 
-const MovieDescription = props => {
+const MovieDescription = ({ img, title, releaseDate, desc, ...restProps }) => {
   return (
     <div className={styles.container}>
       <div className={styles.posterContainer}>
-        <img
-          src="https://i.imgur.com/0oo7XJc.jpg"
-          className={styles.filmPoster}
-          alt="plakat filmowy"
-        />
+        <img src={img} className={styles.filmPoster} alt="plakat filmowy" />
       </div>
       <div className={styles.infoContainer}>
         <header>
-          <h3>title</h3>
-          <p className={styles.releaseDate}>Premiera: czas></p>
+          <h3>{title}</h3>
+          <p className={styles.releaseDate}>
+            <span>Premiera:</span> {releaseDate} r.>
+          </p>
         </header>
         <RunningTime />
-        <p>opis</p>
+        <p>
+          <span>Opis: </span>
+          {desc}
+        </p>
       </div>
     </div>
   );

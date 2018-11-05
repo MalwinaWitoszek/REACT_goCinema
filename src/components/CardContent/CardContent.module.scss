@@ -8,7 +8,7 @@
   // padding: 15px;
   // color: #ececec;
   // background-color: #535353;
-  position: relative;
+  // position: relative;
 }
 
 .posterContainer {
@@ -28,13 +28,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 0 24px;
+  padding-left: 24px;
   overflow: hidden;
   border: 2px solid green;
   h3 {
     color: white;
     text-transform: uppercase;
     margin-top: 0;
+    font-size: .95rem;
     // margin-bottom: 0.35em;
   }
 
@@ -43,7 +44,13 @@
   }
 
   p {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+    text-align: justify;
+    line-height: 1.4;
+    & span {
+      font-weight: bold;
+      color: #07aaaa;
+    }
   }
 }
 
