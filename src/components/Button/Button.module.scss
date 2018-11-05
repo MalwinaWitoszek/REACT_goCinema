@@ -1,0 +1,28 @@
+.container {
+  text-align: center;
+}
+.button {
+  padding: 7px 8px;
+  min-width: 60px;
+  font-size: 0.75rem;
+  min-height: 30px;
+  cursor: pointer;
+  outline: none;
+  background-color: #d3d3d3;
+  border: none;
+  border-radius: 2px ;
+  text-transform: uppercase;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  &:hover {
+    background-color: #4b4b4b;
+    color: #07aaaa;
+    text-shadow:1px 1px 1px #07aaaa;
+  }
+}
+.inaccessible{
+  color: #e61616;
+  text-transform: uppercase;
+  text-shadow:1px 1px 3px #370505;
+  font-size: .7rem;
+  line-height: 2rem;
+}

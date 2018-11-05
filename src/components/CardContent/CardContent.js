@@ -1,9 +1,10 @@
 import React from "react";
 import RunningTime from "../RunningTime/RunningTime";
+import Button from '../Button/Button'
 import PropTypes from "prop-types";
 import styles from "./CardContent.module.scss";
 
-const MovieDescription = ({ img, title, releaseDate, desc, ...restProps }) => {
+const CardContent = ({ img, title, releaseDate, desc, ...restProps }) => {
   return (
     <div className={styles.container}>
       <div className={styles.posterContainer}>
@@ -26,6 +27,6 @@ const MovieDescription = ({ img, title, releaseDate, desc, ...restProps }) => {
   );
 };
 
-MovieDescription.propTypes = {};
+CardContent.propTypes = {};
 
-export default MovieDescription;
+export default CardContent;
