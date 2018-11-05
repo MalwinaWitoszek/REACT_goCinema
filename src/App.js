@@ -63,6 +63,7 @@ const App = () => (
         data.map(film => (
             <Card
             key={film.id}
+            id={film.id}
             img={film.img}
             title={film.title}
             releaseDate={film.releaseDate}
@@ -70,6 +71,8 @@ const App = () => (
             desc={film.desc}
             soldedOut={film.soldedOut}
             rating={film.rating}
+            ratingDesc={film.ratingDesc}
+            allowClear={film.allowClear}
             alert={film.alert}
             />
         ))

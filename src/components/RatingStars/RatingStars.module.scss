@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  font-size:.65rem;
+  min-width: 120px;
+  align-items: center;
+  & > span {
+    color: rgb(146, 145, 145);
+  }
+}
+.starsContainer {
+  margin: 0 .65rem;
+}
+.star {
+  display: inline-block;
+  padding: 0 2px;
+  color: grey;
+  font-size:17px;
+  // showing only half of each star
+  overflow: hidden;
+  width:5.11px;
+  transition: color .2s ease-in-out;
+
+  &.selected{
+    color: yellow;
+  }
+  &:hover{
+    cursor: pointer;
+  }
+ }
+.ratingDescription {
+  display: inline-block;
+text-transform: uppercase;
+text-align: center;
+  font-size: .55rem;
+}

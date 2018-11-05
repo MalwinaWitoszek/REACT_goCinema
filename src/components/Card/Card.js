@@ -6,20 +6,17 @@ import PropTypes from "prop-types";
 import styles from "./Card.module.scss";
 
 
-const Card = ({rating, ratingDesc, allowClear, alert, ...restProps}) => {
+const Card = ({alert, ...restProps}) => {
   return (
     <div className={styles.container}>
       <Alert message={alert.message} type={alert.type}/>
       <CardContent {...restProps} />
-      <CardFooter rating={rating} ratingDesc={ratingDesc}  />
+      <CardFooter {...restProps}  />
     </div>
   );
 };
 
 Card.propTypes = {
-  rating: PropTypes.number.isRequired,
-  ratingDesc: PropTypes.bool.isRequired,
-  allowClear: PropTypes.bool.isRequired,
   alert: PropTypes.object.isRequired,
 };
 
