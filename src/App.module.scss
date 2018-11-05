@@ -1,0 +1,15 @@
+:global {
+  body {
+    background-color: #515151;
+
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  }
+}
+
+.container {
+  display: flex;
+  max-width: 1250px;
+  flex-wrap: wrap;
+  margin: 2% auto;
+}
+

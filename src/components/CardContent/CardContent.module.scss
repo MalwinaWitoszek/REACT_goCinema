@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  // justify-content: space-between;
+  height: 180px;
+  // max-width: 900px;
+  // margin: 20px;
+  border: 1px solid yellow;
+  // padding: 15px;
+  // color: #ececec;
+  // background-color: #535353;
+  position: relative;
+}
+
+.posterContainer {
+  box-shadow: 0 1px 5px 0 rgba(255, 255, 255, 0.2),
+  0 0 2px 0 rgba(255, 255, 255, 0.14), 0 3px 1px -2px rgba(255, 255, 255, 0.12);
+  flex: 0 0 200px;
+  align-self: stretch;
+
+  .filmPoster {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.infoContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 24px;
+  overflow: hidden;
+  border: 2px solid green;
+  h3 {
+    color: white;
+    text-transform: uppercase;
+    margin-top: 0;
+    // margin-bottom: 0.35em;
+  }
+
+  .releaseDate {
+    font-style: italic;
+  }
+
+  p {
+    font-size: 0.65rem;
+  }
+}
+
+.sideContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  max-width: 40vw;
+  margin: 20px;
+  box-shadow: 0 0 0 2px #8b0202, 0 0 5px 2px #8f8686;
+  padding: 15px;
+  color: #ececec;
+  background-color: #292929;
+  position: relative;
+}
