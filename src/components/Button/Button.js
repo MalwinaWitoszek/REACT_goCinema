@@ -15,11 +15,14 @@ const Button = ({ soldetOut, text, onClick }) => {
 };
 
 Button.defaultProps = {
+  soldedOut: false,
   text: "Rezerwuj",
 };
 
 Button.propTypes = {
-  soldedOut: PropTypes.bool.isRequired
+  soldedOut: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Button;

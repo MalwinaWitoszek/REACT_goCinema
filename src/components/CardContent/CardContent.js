@@ -3,9 +3,9 @@ import RunningTime from "../RunningTime/RunningTime";
 import PropTypes from "prop-types";
 import styles from "./CardContent.module.scss";
 
-const CardContent = ({ img, title, releaseDate, desc, ...restProps }) => {
+const CardContent = ({ img, title, releaseDate, desc, style, ...restProps }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={style}>
       <div className={styles.posterContainer}>
         <img src={img} className={styles.filmPoster} alt="plakat filmowy" />
       </div>
@@ -27,15 +27,20 @@ const CardContent = ({ img, title, releaseDate, desc, ...restProps }) => {
 };
 
 CardContent.defaultProps = {
-  title: "brak tytułu",
-  description: "brak opisu"
+  title: "Brak tytułu",
+  releaseDate: "Nieznana" ,
+  desc: "Brak opisu",
+  style: {
+    marginBottom: '0.65rem'
+  }
 };
 
 CardContent.propTypes = {
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired
+  desc: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired,
 };
 
 export default CardContent;

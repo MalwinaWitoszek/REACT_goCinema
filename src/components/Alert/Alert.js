@@ -9,7 +9,7 @@ const iconType = {
   info: "info-circle"
 };
 
-const Alert = ({ message, type }) => {
+const Alert = ({ alert: { message, type } }) => {
   return (
     <div className={`${styles.container} ${styles[type]}`}>
       <img
@@ -22,9 +22,15 @@ const Alert = ({ message, type }) => {
   );
 };
 
+Alert.defaultProps = {
+  alert: {
+    message: "Nowość!",
+    type: "success"
+  }
+};
+
 Alert.propTypes = {
-  message: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  alert: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Alert;
