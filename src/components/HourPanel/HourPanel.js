@@ -5,7 +5,7 @@ import styles from './HourPanel.module.scss'
 const HourPanel = ({hour, activeClass, onClick}) => {
   return (
     <div
-    className={styles.container}
+    className={`${styles.container} ${activeClass}`}
     onClick={onClick}
     >
     <span>{hour}</span>

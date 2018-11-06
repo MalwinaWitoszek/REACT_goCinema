@@ -22,7 +22,7 @@ Button.defaultProps = {
 Button.propTypes = {
   soldedOut: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func,
 };
 
 export default Button;

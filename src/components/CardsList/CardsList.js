@@ -3,6 +3,8 @@ import Card from '../Card/Card'
 import PropTypes from 'prop-types';
 import styles from './CardsList.module.scss'
 
+import BookingCardDetails from '../BookingCardDetails/BookingCardDetails'
+
 class CardsList extends Component {
   render() {
     const { data } = this.props;
@@ -26,6 +28,7 @@ class CardsList extends Component {
               />
           ))
       }
+      <BookingCardDetails />
 
       </div>
     );
