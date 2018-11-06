@@ -23,6 +23,38 @@ class RatingStars extends Component {
     tempRating: null
   };
 
+  // voting after clicking
+  onClickHandler = ratingStar => {
+    const { allowClear } = this.props;
+    allowClear && this.state.temp === ratingStar
+      ? this.setState({
+          rating: 0,
+          temp:null
+        })
+      : this.setState({
+          rating: ratingStar,
+          temp: ratingStar
+        });
+  };
+
+  // proposition of voting after mouseover event
+  onMouseOverHandler = ratingPropose => {
+    this.setState(prevState => {
+      return {
+        temp: prevState.rating,
+        rating: ratingPropose
+      };
+    });
+  };
+
+    // return to the state before 'hover'
+  onMouseOutHandler = () => {
+    this.setState( {
+        rating: this.state.temp,
+        temp: null
+    });
+  };
+
   render() {
     const { ratingDesc } = this.props;
     const stars = [];
@@ -41,6 +73,9 @@ class RatingStars extends Component {
             direction: star % 2 ? "ltr" : "rtl"
           }}
           className={starClass}
+          onClick={() => this.onClickHandler(star)}
+          onMouseOver={() => this.onMouseOverHandler(star)}
+          onMouseOut={this.onMouseOutHandler}
         >
           &#10032;
         </span>
@@ -49,13 +84,23 @@ class RatingStars extends Component {
 
     return (
       <div className={styles.container}>
-      <span>Weź udział w rankingu:</span>
+        <span>Weź udział w rankingu:</span>
         <div className={styles.starsContainer}> {stars}</div>
         {/*displaying rating description depending on prop ratingDesc(true or false) */}
-        { ratingDesc && <div className={styles.ratingDescription}>( { ratingDescription[this.state.rating] } )</div>  }
+        {ratingDesc && (
+          <div className={styles.ratingDescription}>
+            ( {ratingDescription[this.state.rating]} )
+          </div>
+        )}
       </div>
     );
   }
+}
+
+RatingStars.defaultProps ={
+  rating: null,
+  ratingDesc: true,
+  allowClear: false,
 }
 
 RatingStars.propTypes = {
