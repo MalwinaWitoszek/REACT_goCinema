@@ -4,6 +4,7 @@ import CardContent from "../CardContent/CardContent";
 import CardFooter from "../CardFooter/CardFooter";
 import styles from "./Card.module.scss";
 
+import BookingForm from '../BookingForm/BookingForm'
 
 const Card = props => {
   const CardContentStyle = {
@@ -15,6 +16,7 @@ const Card = props => {
       <Alert {...props}/>
       <CardContent {...props} style={CardContentStyle} />
       <CardFooter {...props}  />
+      <BookingForm />
     </div>
   );
 };

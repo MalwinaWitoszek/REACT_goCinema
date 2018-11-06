@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.seancesHoursContainer {
+  display: flex;
+}
+.activeSeance {
+  background-color: rgb(167, 164, 164);
+  color: black;
+}
