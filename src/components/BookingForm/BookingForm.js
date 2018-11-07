@@ -11,6 +11,7 @@ const BookingForm = ({
   numberOfSeats,
   activeSeanceId,
   errorMessage,
+  bookingMessage,
   onClickHourPanel,
   onChangeInput,
   onSubmitForm
@@ -52,7 +53,18 @@ const BookingForm = ({
             message: errorMessage,
             type: "error"
           }}
-          className={styles.alertBooking}
+          extraStyleContainer={styles.alertBookingContainer}
+          extraStyleMessage={styles.alertBookingMessage}
+        />
+      )}
+      {bookingMessage && (
+        <Alert
+          alert={{
+            message: bookingMessage,
+            type: "success"
+          }}
+          extraStyleContainer={styles.alertBookingContainer}
+          extraStyleMessage={styles.alertBookingMessage}
         />
       )}
     </form>

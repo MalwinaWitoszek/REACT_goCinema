@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import CardContent from "../CardContent/CardContent";
 import CardFooter from "../CardFooter/CardFooter";
 import BookingForm from "../BookingForm/BookingForm";
-import PropTypes from "prop-types";
-import styles from "./BookingCardDetails.module.scss";
+import styles from "./CardDetails.module.scss";
 
-class BookingCardDetails extends Component {
+class CardDetails extends Component {
   state = {
     film: {
       id: 1,
@@ -41,7 +40,8 @@ class BookingCardDetails extends Component {
     numberOfSeats: "",
     hourOfSeance: null,
     activeSeanceId: null,
-    errorMessage: null
+    errorMessage: null,
+    bookingMessage: null
   };
 
   onClickHourPanel = (seanceId, hourOfSeance) => {
@@ -61,34 +61,32 @@ class BookingCardDetails extends Component {
     e.preventDefault();
     const { numberOfSeats, hourOfSeance } = this.state;
 
-
     // checking if the hour of seance and number of seats have been given
     if (!hourOfSeance && !numberOfSeats) {
-      this.setState({
-        errorMessage: "Proszę podać godzinę seansu i ilość miejsc"
+      return this.setState({
+        errorMessage: "Proszę wybrać godzinę seansu i ilość miejsc"
       });
-      return;
     }
     if (!hourOfSeance) {
-      this.setState({
-        errorMessage: "Proszę podać godzinę seansu"
+      return this.setState({
+        errorMessage: "Proszę wybrać godzinę seansu"
       });
-      return;
     }
     if (!numberOfSeats) {
-      this.setState({
+      return this.setState({
         errorMessage: "Proszę podać ilość miejsc"
       });
-      return;
     }
 
     // clearing errorMessage when everything was given
     this.setState({
       errorMessage: null
     });
+
+    this.setState({
+      bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${hourOfSeance}`
+    });
   };
-
-
 
   render() {
     const { film, ...rest } = this.state;
@@ -107,6 +105,4 @@ class BookingCardDetails extends Component {
   }
 }
 
-BookingCardDetails.propTypes = {};
-
-export default BookingCardDetails;
+export default CardDetails;
