@@ -1,25 +1,29 @@
 import React, { Component } from "react";
 import Button from "../Button/Button";
 import HourPanel from "../HourPanel/HourPanel";
+import Alert from "../Alert/Alert";
 import PropTypes from "prop-types";
 import styles from "./BookingForm.module.scss";
-
 
 const BookingForm = ({
   seancesHours,
   hourOfSeance,
+  numberOfSeats,
   activeSeanceId,
-  onClickHourPanel
+  errorMessage,
+  onClickHourPanel,
+  onChangeInput,
+  onSubmitForm
 }) => {
   return (
-    <div>
-      <span>Wybierz godzinę:</span>
+    <form id="bookingForm" onSubmit={onSubmitForm}>
       <div className={styles.seancesContainer}>
+        <span>Wybierz godzinę:</span>
         {seancesHours.map(seance => {
           return (
             <HourPanel
               key={seance.id}
-              activeClass = { seance.id === activeSeanceId && styles.activeSeance}
+              activeClass={seance.id === activeSeanceId && styles.activeSeance}
               id={seance.id}
               hour={seance.hour}
               onClick={() => onClickHourPanel(seance.id, seance.hour)}
@@ -32,15 +36,26 @@ const BookingForm = ({
         <div>
           <label htmlFor="seatsNumber">Podaj ilość miejsc: </label>
           <input
-            type="text"
+            type="number"
+            min="1"
             name="seatsNumber"
-            placeholder=" np. 2"
-            // onChange={this.onChange}
+            value={numberOfSeats}
+            placeholder="0"
+            onChange={onChangeInput}
           />
         </div>
-        <Button />
+        <Button  type="submit" form="bookingForm" />
       </div>
-    </div>
+      {errorMessage && (
+        <Alert
+          alert={{
+            message: errorMessage,
+            type: "error"
+          }}
+          className={styles.alertBooking}
+        />
+      )}
+    </form>
   );
 };
 

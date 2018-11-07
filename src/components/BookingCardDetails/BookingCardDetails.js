@@ -38,25 +38,69 @@ class BookingCardDetails extends Component {
         id: 3
       }
     ],
+    numberOfSeats: "",
     hourOfSeance: null,
-    activeSeanceId: null
+    activeSeanceId: null,
+    errorMessage: null
   };
 
- onClickHourPanel = (seanceId, hourOfSeance) => {
-    return(
+  onClickHourPanel = (seanceId, hourOfSeance) => {
+    this.setState({
+      activeSeanceId: seanceId,
+      hourOfSeance: hourOfSeance
+    });
+  };
+
+  onChangeInput = e => {
+    this.setState({
+      numberOfSeats: e.target.value
+    });
+  };
+
+  onSubmitForm = e => {
+    e.preventDefault();
+    const { numberOfSeats, hourOfSeance } = this.state;
+
+
+    // checking if the hour of seance and number of seats have been given
+    if (!hourOfSeance && !numberOfSeats) {
       this.setState({
-        activeSeanceId: seanceId,
-        hourOfSeance: hourOfSeance
-      })
-    )
-  }
+        errorMessage: "Proszę podać godzinę seansu i ilość miejsc"
+      });
+      return;
+    }
+    if (!hourOfSeance) {
+      this.setState({
+        errorMessage: "Proszę podać godzinę seansu"
+      });
+      return;
+    }
+    if (!numberOfSeats) {
+      this.setState({
+        errorMessage: "Proszę podać ilość miejsc"
+      });
+      return;
+    }
+
+    // clearing errorMessage when everything was given
+    this.setState({
+      errorMessage: null
+    });
+  };
+
+
 
   render() {
     const { film, ...rest } = this.state;
     return (
       <div className={styles.container}>
-        <CardContent {...film}/>
-        <BookingForm {...rest} onClickHourPanel={this.onClickHourPanel}/>
+        <CardContent {...film} />
+        <BookingForm
+          {...rest}
+          onClickHourPanel={this.onClickHourPanel}
+          onChangeInput={this.onChangeInput}
+          onSubmitForm={this.onSubmitForm}
+        />
         Link powrotu
       </div>
     );
