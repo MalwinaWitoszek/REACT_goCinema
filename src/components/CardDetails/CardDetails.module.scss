@@ -1,18 +1,20 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   height: auto;
   min-width: 480px;
-  max-width: 75vw;
-  margin: 35px auto;
+  max-width: 700px;
+  margin: 55px auto;
   box-shadow: 0 0 0 2px #8b0202, 0 0 5px 2px #8f8686;
   padding: 15px;
   color: #ececec;
   background-color: #292929;
-  position: relative;
-
 }
 .BookingFormWrapper{
   margin: 25px 0;
+}
+.link {
+  text-decoration: none;
+  color:#07aaaa;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
 }

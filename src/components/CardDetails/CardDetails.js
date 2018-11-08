@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import CardContent from "../CardContent/CardContent";
-import BookingForm from "../BookingForm/BookingForm";
-import styles from "./CardDetails.module.scss";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+
+import BookingForm from '../BookingForm/BookingForm';
+import CardContent from '../CardContent/CardContent';
+import styles from './CardDetails.module.scss';
 
 class CardDetails extends Component {
   state = {
@@ -99,7 +101,8 @@ class CardDetails extends Component {
           onChangeInput={this.onChangeInput}
           onSubmitForm={this.onSubmitForm}
         />
-        Link powrotu
+        <NavLink className={styles.link} to='/movies'> ⇦ Powrot
+      </NavLink>
       </div>
     );
   }
