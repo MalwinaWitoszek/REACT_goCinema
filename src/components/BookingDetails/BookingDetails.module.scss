@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bookingDesc {
+  flex:2;
+  display: flex;
+  justify-content: space-around;
+  background-color: #07832e;
+  align-items: center;
+  box-shadow: 0 0 3px 1px #033a13 inset;
+  font-size: .8rem;
+}
+.buttonDelateBooking{
+  margin-left: 20px;
+  color: #e61616;
+ 
+  &:hover {
+    color: #2c2c2c;
+    background-color: #e61616;
+    text-shadow:1px 1px 1px #e02525;
+  }
+}

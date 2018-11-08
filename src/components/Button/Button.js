@@ -2,13 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-const Button = ({ soldetOut, text, onClickButton }) => {
+const Button = ({ soldedOut, text, onClickButton, extraStyle }) => {
+  console.log('brr',extraStyle)
   return (
     <div className={styles.container}>
-      {soldetOut ? (
+      {console.log('solded',soldedOut)}
+      {        soldedOut ? (
         <span className={styles.inaccessible}>niedostępny</span>
       ) : (
-        <button className={styles.button} onClick={onClickButton}>{text}</button>
+        <button className={`${styles.button} ${extraStyle}`} onClick={onClickButton}>{text}</button>
       )}
     </div>
   );
@@ -16,13 +18,15 @@ const Button = ({ soldetOut, text, onClickButton }) => {
 
 Button.defaultProps = {
   soldedOut: false,
-  text: "Rezerwuj",
+  text: "zatwierdź",
+  extraStyle: null,
 };
 
 Button.propTypes = {
-  soldedOut: PropTypes.bool.isRequired,
+  soldedOut: PropTypes.bool,
   text: PropTypes.string.isRequired,
-  onClickButton: PropTypes.func,
+  extraStyle: PropTypes.string,
+  onClickButton: PropTypes.func
 };
 
 export default Button;

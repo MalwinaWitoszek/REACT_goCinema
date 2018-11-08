@@ -1,6 +1,6 @@
 import React from "react";
 import CardContent from "../CardContent/CardContent";
-import BookinDetails from "../BookingDetails/BookingDetails";
+import BookingDetails from "../BookingDetails/BookingDetails";
 import PropTypes from "prop-types";
 import styles from "./BookingCard.module.scss";
 
@@ -9,15 +9,17 @@ const BookingCard = ({numberOfSeats,hourOfSeance, ...restBooking}) => {
   return (
     <div className={styles.container}>
       <CardContent {...restBooking} />
-      <BookinDetails
+      <BookingDetails
         numberOfSeats={numberOfSeats}
         hourOfSeance={hourOfSeance}
       />
-      Link powrotu
     </div>
   );
 };
 
-BookingCard.propTypes = {};
+BookingCard.propTypes = {
+  numberOfSeats: PropTypes.number.isRequired,
+  hourOfSeance: PropTypes.string.isRequired
+};
 
 export default BookingCard;

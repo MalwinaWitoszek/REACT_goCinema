@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import BookingCard from '../BookingCard/BookingCard'
-import PropTypes from 'prop-types';
-import styles from './BookingCardsList.module.scss';
+import styles from './BookingCardsList.module.scss'
 
 const bookings = [
   {
@@ -39,7 +38,7 @@ const bookings = [
       message: "Wyprzedane",
       type: "error"
     },
-    id: 3,
+    id: 2,
     numberOfSeats: 1,
     hourOfSeance: '20.00',
   }
@@ -48,10 +47,10 @@ const bookings = [
 class BookingCardsList extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.container}>
       {bookings.map(booking => {
         return (
-          <BookingCard {...booking}/>
+          <BookingCard {...booking} key={booking.id}/>
         )
       })}
       </div>
@@ -59,8 +58,6 @@ class BookingCardsList extends Component {
   }
 }
 
-BookingCardsList.propTypes = {
 
-};
 
 export default BookingCardsList;

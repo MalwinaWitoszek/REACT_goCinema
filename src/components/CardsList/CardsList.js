@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import Card from '../Card/Card'
 import styles from './CardsList.module.scss'
 
-
-import CardDetails from '../CardDetails/CardDetails'
-import BookingCardsList from '../BookingCardsList/BookingCardsList'
-
 const data = [
   {
     title: "First Man",
@@ -83,8 +79,6 @@ class CardsList extends Component {
               />
           ))
       }
-      <CardDetails />
-      <BookingCardsList />
       </div>
     );
   }

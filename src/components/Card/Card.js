@@ -9,11 +9,13 @@ const Card = props => {
     marginBottom: '0.4rem',
   };
 
+
+
   return (
     <div className={styles.container}>
       <Alert {...props}/>
       <CardContent {...props} style={CardContentStyle} />
-      <CardFooter {...props}  />
+      <CardFooter {...props} toPath="movie/1" buttonText="rezerwuj" />
     </div>
   );
 };

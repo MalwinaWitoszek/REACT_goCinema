@@ -1,20 +1,23 @@
 import React from "react";
-import Button from '../Button/Button'
+import Button from "../Button/Button";
 import PropTypes from "prop-types";
-import styles from './BookingDetails.module.scss'
+import styles from "./BookingDetails.module.scss";
 
-const BookingDetails = ({numberOfSeats,hourOfSeance}) => {
+const BookingDetails = ({ numberOfSeats, hourOfSeance }) => {
   return (
     <div className={styles.container}>
-      <p>
-        <span>Godzina rezerwacji: </span>
-        {hourOfSeance}
-      </p>
-      <p>
-        <span>Ilość miejsc: </span>
-       {numberOfSeats}
-      </p>
-      <Button text="Usuń"/>
+      <div className={styles.bookingDesc}>
+        <p>
+          <span>Godzina rezerwacji: </span>
+          {hourOfSeance}
+        </p>
+        <p>
+          <span>Ilość miejsc: </span>
+          {numberOfSeats}
+        </p>
+      </div>
+
+      <Button text="Usuń" extraStyle={styles.buttonDelateBooking} />
     </div>
   );
 };

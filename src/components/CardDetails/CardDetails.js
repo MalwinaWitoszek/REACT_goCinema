@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CardContent from "../CardContent/CardContent";
-import CardFooter from "../CardFooter/CardFooter";
 import BookingForm from "../BookingForm/BookingForm";
 import styles from "./CardDetails.module.scss";
 
@@ -95,6 +94,7 @@ class CardDetails extends Component {
         <CardContent {...film} />
         <BookingForm
           {...rest}
+          extraStyle={styles.BookingFormWrapper}
           onClickHourPanel={this.onClickHourPanel}
           onChangeInput={this.onChangeInput}
           onSubmitForm={this.onSubmitForm}
