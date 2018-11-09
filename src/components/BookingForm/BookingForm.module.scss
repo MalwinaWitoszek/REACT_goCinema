@@ -6,13 +6,17 @@
 .container {
   display: flex;
   flex-direction: column;
+  font-size: .85rem;
 
   // justify-content: space-between;
   // margin: 0 30px;
   // align-items: flex-end;
-  p {
+  p, label {
     margin: 0;
+    height: 1.5rem;
+    text-align: center;
   }
+
 }
 .seancesContainer {
   display: flex;
@@ -32,18 +36,33 @@
   background-color: #070707;
 
 }
+input{
+  background-color: #ccc;
+  padding: 5px;
+  margin: 0 auto;
+  border-width: 0px;
+  border-radius: 2px;
+  width: 50%;
+}
 .alertBookingMessage {
   font-size: .75rem;
   text-transform: uppercase;
   // display: block;
 }
+.buttonConfirmBookingContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-.buttonConfirmBooking {
-  color:#056422;
+  .buttonConfirmBooking {
+    color:#056422;
 
-  &:hover {
-    color: #1b1b1b;
-    background-color: #07832e;
-    text-shadow:1px 1px 1px rgb(7, 155, 52);
+    &:hover {
+      color: #1b1b1b;
+      background-color: #07832e;
+      text-shadow:1px 1px 1px rgb(7, 155, 52);
+    }
   }
+
 }
+

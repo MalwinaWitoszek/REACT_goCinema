@@ -54,6 +54,7 @@ const BookingForm = ({
         <Button
           type="submit"
           soldetOut={soldetOut}
+          extraStyleContainer={styles.buttonConfirmBookingContainer}
           extraStyle={styles.buttonConfirmBooking}
         />
       </div>

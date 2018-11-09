@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-const Button = ({ soldedOut, text, onClickButton, extraStyle, navButton }) => {
+const Button = ({ soldedOut, text, onClickButton, extraStyle, extraStyleContainer, navButton }) => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${extraStyleContainer}`}>
         {soldedOut ? (
         <span className={styles.inaccessible}>niedostępny</span>
       ) : navButton ? (
@@ -24,12 +24,14 @@ const Button = ({ soldedOut, text, onClickButton, extraStyle, navButton }) => {
 Button.defaultProps = {
   soldedOut: false,
   text: "zatwierdź",
-  extraStyle: null
+  extraStyleContainer: null,
+  extraStyle: null,
 };
 
 Button.propTypes = {
   soldedOut: PropTypes.bool,
   text: PropTypes.string.isRequired,
+  extraStyleContainer: PropTypes.string,
   extraStyle: PropTypes.string,
   onClickButton: PropTypes.func
 };
