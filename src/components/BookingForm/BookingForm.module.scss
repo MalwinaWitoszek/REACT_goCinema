@@ -7,10 +7,6 @@
   display: flex;
   flex-direction: column;
   font-size: .85rem;
-
-  // justify-content: space-between;
-  // margin: 0 30px;
-  // align-items: flex-end;
   p, label {
     margin: 0;
     height: 1.5rem;
@@ -21,14 +17,12 @@
 .seancesContainer {
   display: flex;
   flex-wrap: wrap;
-  // margin: 0 30px;
 }
 
 .activeSeance {
   background-color: rgb(167, 164, 164);
   color: black;
 }.alertBookingContainer {
-  // padding: 5px;
   position: static;
   min-height: 1.5rem;
   margin: 20px 0;
@@ -47,7 +41,6 @@ input{
 .alertBookingMessage {
   font-size: .75rem;
   text-transform: uppercase;
-  // display: block;
 }
 .buttonConfirmBookingContainer{
   display: flex;
