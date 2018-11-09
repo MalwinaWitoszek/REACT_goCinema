@@ -24,19 +24,19 @@ self.__precacheManifest = [
     "url": "/REACT_goCinema/static/js/runtime~main.f9750c6e.js"
   },
   {
-    "revision": "a4aab738d98dec4c5ceb",
-    "url": "/REACT_goCinema/static/js/main.a4aab738.chunk.js"
+    "revision": "bbf16575d89a78bf3bde",
+    "url": "/REACT_goCinema/static/js/main.bbf16575.chunk.js"
   },
   {
     "revision": "8037650d188c6190ca71",
     "url": "/REACT_goCinema/static/js/1.8037650d.chunk.js"
   },
   {
-    "revision": "a4aab738d98dec4c5ceb",
+    "revision": "bbf16575d89a78bf3bde",
     "url": "/REACT_goCinema/static/css/main.9b729cbc.chunk.css"
   },
   {
-    "revision": "82fb16d093bb2119d065e475ae374d29",
+    "revision": "510dfec91297067f07077e4ba1530a87",
     "url": "/REACT_goCinema/index.html"
   }
 ];
