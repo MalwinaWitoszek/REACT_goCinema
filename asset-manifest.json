@@ -1,7 +1,7 @@
 {
-  "main.css": "/REACT_goCinema/static/css/main.9b729cbc.chunk.css",
-  "main.js": "/REACT_goCinema/static/js/main.bbf16575.chunk.js",
-  "main.js.map": "/REACT_goCinema/static/js/main.bbf16575.chunk.js.map",
+  "main.css": "/REACT_goCinema/static/css/main.fc48fbce.chunk.css",
+  "main.js": "/REACT_goCinema/static/js/main.91ac528f.chunk.js",
+  "main.js.map": "/REACT_goCinema/static/js/main.91ac528f.chunk.js.map",
   "static/js/1.8037650d.chunk.js": "/REACT_goCinema/static/js/1.8037650d.chunk.js",
   "static/js/1.8037650d.chunk.js.map": "/REACT_goCinema/static/js/1.8037650d.chunk.js.map",
   "runtime~main.js": "/REACT_goCinema/static/js/runtime~main.f9750c6e.js",
@@ -11,8 +11,8 @@
   "static/media/exclamation-triangle.svg": "/REACT_goCinema/static/media/exclamation-triangle.f69d8f07.svg",
   "static/media/info-circle.svg": "/REACT_goCinema/static/media/info-circle.82667ccd.svg",
   "static/media/check-circle.svg": "/REACT_goCinema/static/media/check-circle.9e3f6628.svg",
-  "static/css/main.9b729cbc.chunk.css.map": "/REACT_goCinema/static/css/main.9b729cbc.chunk.css.map",
+  "static/css/main.fc48fbce.chunk.css.map": "/REACT_goCinema/static/css/main.fc48fbce.chunk.css.map",
   "index.html": "/REACT_goCinema/index.html",
-  "precache-manifest.be816ed65d19f9d53f1f76247924ac11.js": "/REACT_goCinema/precache-manifest.be816ed65d19f9d53f1f76247924ac11.js",
+  "precache-manifest.be4f767b6cf155c29cf08073d450c2c3.js": "/REACT_goCinema/precache-manifest.be4f767b6cf155c29cf08073d450c2c3.js",
   "service-worker.js": "/REACT_goCinema/service-worker.js"
 }
