@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import CardContent from "../CardContent/CardContent";
+import BookingForm from "../BookingForm/BookingForm";
+import styles from "./CardDetails.module.scss";
 
-import BookingForm from '../BookingForm/BookingForm';
-import CardContent from '../CardContent/CardContent';
-import styles from './CardDetails.module.scss';
 
 class CardDetails extends Component {
   state = {
@@ -52,13 +52,13 @@ class CardDetails extends Component {
     });
   };
 
-  onChangeInput = e => {
+  onChangeInputSeats = e => {
     this.setState({
       numberOfSeats: e.target.value
     });
   };
 
-  onSubmitForm = e => {
+  onSubmitFormBooking = e => {
     e.preventDefault();
     const { numberOfSeats, hourOfSeance } = this.state;
 
@@ -78,12 +78,11 @@ class CardDetails extends Component {
         errorMessage: "Proszę podać ilość miejsc"
       });
     }
-
     // clearing errorMessage when everything was given
     this.setState({
       errorMessage: null
     });
-
+    // setting bookingMessage when everything was given
     this.setState({
       bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${hourOfSeance}`
     });
@@ -98,11 +97,13 @@ class CardDetails extends Component {
           {...rest}
           extraStyle={styles.BookingFormWrapper}
           onClickHourPanel={this.onClickHourPanel}
-          onChangeInput={this.onChangeInput}
-          onSubmitForm={this.onSubmitForm}
+          onChangeInputSeats={this.onChangeInputSeats}
+          onSubmitFormBooking={this.onSubmitFormBooking}
         />
-        <NavLink className={styles.link} to='/movies'> ⇦ Powrot
-      </NavLink>
+        <NavLink className={styles.link} to="/movies">
+          {" "}
+          ⇦ Powrot
+        </NavLink>
       </div>
     );
   }

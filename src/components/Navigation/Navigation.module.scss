@@ -9,21 +9,21 @@ box-shadow: 0px 15px 16px 2px #292929;
 .link {
   // flex: 1;
   text-decoration: none;
-  color: brown;
+  color: #b40303;
   font-size: .95rem;
   font-weight: 800;
   text-transform: uppercase;
   margin: 0 15px;
-  transition: .3s ease-in-out;
+  transition: .2s ease-in-out;
   &:hover {
-    color: yellow;
+    color: #fafa1a;
   }
   & span {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 }
 .active{
-  font-weight: bold;
-  color: green;
-  background-color: pink;
-}
+  font-size: 1.1rem;
+  position: relative;
+  color: lighten(#b40303,10%);
+  }

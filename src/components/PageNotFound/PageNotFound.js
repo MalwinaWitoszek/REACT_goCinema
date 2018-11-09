@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
 import styles from './PageNotFound.module.scss';
 
 const PageNotFound = props => {
@@ -9,7 +8,7 @@ const PageNotFound = props => {
     <h2>Błąd 404 </h2>
      <h3>Strony nie odnaleziono</h3>
     <p>Przepraszamy, ale strona ktorej szukasz nie istnieje...</p>
-    <p>Wróć do <NavLink to="/">strony głównej</NavLink></p>
+    <p>Wróć do <NavLink to="/" className={styles.link}>strony głównej</NavLink></p>
     </div>
   )
 }

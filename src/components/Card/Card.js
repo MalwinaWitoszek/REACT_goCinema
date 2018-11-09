@@ -9,8 +9,6 @@ const Card = props => {
     marginBottom: '0.4rem',
   };
 
-
-
   return (
     <div className={styles.container}>
       <Alert {...props}/>

@@ -2,6 +2,7 @@ import CardsList from "../components/CardsList/CardsList";
 import CardDetails from "../components/CardDetails/CardDetails";
 import BookingCardsList from "../components/BookingCardsList/BookingCardsList";
 
+
 export default {
   routes: [
     {
@@ -21,14 +22,14 @@ export default {
       path: "/bookings/:userId",
       component: BookingCardsList,
       exact: true
-    },
-   ],
+    }
+  ],
   redirects: [
     {
       id: 1,
       from: "/",
       to: "/movies",
-      exact: true,
+      exact: true
     },
     {
       id: 2,

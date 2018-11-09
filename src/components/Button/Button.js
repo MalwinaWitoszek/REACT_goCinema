@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
 const Button = ({ soldedOut, text, onClickButton, extraStyle, navButton }) => {
-  console.log("brr", extraStyle);
   return (
     <div className={styles.container}>
-      {console.log("solded", soldedOut)}
-      {soldedOut ? (
+        {soldedOut ? (
         <span className={styles.inaccessible}>niedostępny</span>
       ) : navButton ? (
         navButton

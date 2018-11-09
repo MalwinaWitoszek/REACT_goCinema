@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import BookingCard from '../BookingCard/BookingCard'
-import styles from './BookingCardsList.module.scss'
+import React, { Component } from "react";
+import BookingCard from "../BookingCard/BookingCard";
+import styles from "./BookingCardsList.module.scss";
 
 const bookings = [
   {
@@ -20,7 +20,7 @@ const bookings = [
     },
     id: 1,
     numberOfSeats: 2,
-    hourOfSeance: '17.30',
+    hourOfSeance: "17.30"
   },
   {
     title: "American Animals",
@@ -40,24 +40,30 @@ const bookings = [
     },
     id: 2,
     numberOfSeats: 1,
-    hourOfSeance: '20.00',
+    hourOfSeance: "20.00"
   }
 ];
 
 class BookingCardsList extends Component {
+  onClickDeleteBooking = (bookingId) => {
+  console.log('usunięto: ', bookingId)
+  }
+
   render() {
     return (
       <div className={styles.container}>
-      {bookings.map(booking => {
-        return (
-          <BookingCard {...booking} key={booking.id}/>
-        )
-      })}
+        {bookings.map(booking => {
+          return (
+            <BookingCard
+              {...booking}
+              key={booking.id}
+              onClickDeleteBooking={() => this.onClickDeleteBooking(booking.id)}
+            />
+          );
+        })}
       </div>
     );
   }
 }
-
-
 
 export default BookingCardsList;

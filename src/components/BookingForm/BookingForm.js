@@ -15,11 +15,11 @@ const BookingForm = ({
   bookingMessage,
   extraStyle,
   onClickHourPanel,
-  onChangeInput,
-  onSubmitForm
+  onChangeInputSeats,
+  onSubmitFormBooking
 }) => {
   return (
-    <form onSubmit={onSubmitForm} className={extraStyle}>
+    <form onSubmit={onSubmitFormBooking} className={extraStyle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <p>Wybierz godzinę:</p>
@@ -48,7 +48,7 @@ const BookingForm = ({
             name="seatsNumber"
             value={numberOfSeats}
             placeholder="0"
-            onChange={onChangeInput}
+            onChange={onChangeInputSeats}
           />
         </div>
         <Button
@@ -90,8 +90,8 @@ BookingForm.propTypes = {
   errorMessage: PropTypes.string,
   bookingMessage: PropTypes.string,
   onClickHourPanel: PropTypes.func,
-  onChangeInput: PropTypes.func,
-  onSubmitForm: PropTypes.func
+  onChangeInputSeats: PropTypes.func,
+  onSubmitFormBooking: PropTypes.func
 };
 
 export default BookingForm;
