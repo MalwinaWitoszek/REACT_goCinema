@@ -35,6 +35,12 @@ export default {
       id: 2,
       from: "/redirect",
       to: "/movies"
+    },
+    {
+      id: 3,
+      from: "/REACT_goCinema/",
+      to: "/movies",
+      exact: true,
     }
   ]
 };
