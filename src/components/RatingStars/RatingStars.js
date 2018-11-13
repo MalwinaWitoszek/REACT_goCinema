@@ -104,9 +104,9 @@ RatingStars.defaultProps ={
 }
 
 RatingStars.propTypes = {
-  rating: PropTypes.number.isRequired,
-  ratingDesc: PropTypes.bool.isRequired,
-  allowClear: PropTypes.bool.isRequired
+  rating: PropTypes.number,
+  ratingDesc: PropTypes.bool,
+  allowClear: PropTypes.bool,
 };
 
 export default RatingStars;

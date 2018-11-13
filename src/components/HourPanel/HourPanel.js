@@ -14,7 +14,7 @@ const HourPanel = ({hour, activeClass, onClick}) => {
 }
 
 HourPanel.propTypes = {
-  hour: PropTypes.string.isRequired,
+  hour: PropTypes.string,
   activeClass: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   onClick: PropTypes.func
 }

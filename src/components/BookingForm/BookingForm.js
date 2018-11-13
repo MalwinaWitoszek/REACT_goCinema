@@ -2,16 +2,16 @@ import React from "react";
 import Button from "../Button/Button";
 import HourPanel from "../HourPanel/HourPanel";
 import Alert from "../Alert/Alert";
+import { formatTime } from '../../utils'
 import PropTypes from "prop-types";
 import styles from "./BookingForm.module.scss";
 
 const BookingForm = ({
   seancesHours,
-  hourOfSeance,
   numberOfSeats,
-  activeSeanceId,
+  activeSeance,
   errorMessage,
-  soldetOut,
+  // soldetOut,
   bookingMessage,
   extraStyle,
   onClickHourPanel,
@@ -19,21 +19,21 @@ const BookingForm = ({
   onSubmitFormBooking
 }) => {
   return (
+
     <form onSubmit={onSubmitFormBooking} className={extraStyle}>
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <p>Wybierz godzinę:</p>
           <div className={styles.seancesContainer}>
-            {seancesHours.map(seance => {
+            {seancesHours.map((seance,index) => {
               return (
                 <HourPanel
-                  key={seance.id}
+                  key={index}
                   activeClass={
-                    seance.id === activeSeanceId && styles.activeSeance
+                    seance === activeSeance && styles.activeSeance
                   }
-                  id={seance.id}
-                  hour={seance.hour}
-                  onClick={() => onClickHourPanel(seance.id, seance.hour)}
+                  hour={formatTime(seance)}
+                  onClick={() => onClickHourPanel(seance)}
                 />
               );
             })}
@@ -53,7 +53,7 @@ const BookingForm = ({
         </div>
         <Button
           type="submit"
-          soldetOut={soldetOut}
+          // soldetOut={soldetOut}
           extraStyleContainer={styles.buttonConfirmBookingContainer}
           extraStyle={styles.buttonConfirmBooking}
         />
@@ -84,10 +84,9 @@ const BookingForm = ({
 };
 
 BookingForm.propTypes = {
-  seancesHours: PropTypes.arrayOf(PropTypes.object),
-  hourOfSeance: PropTypes.string,
+  seancesHours: PropTypes.arrayOf(PropTypes.string),
   numberOfSeats: PropTypes.string,
-  activeSeanceId: PropTypes.number,
+  activeSeance: PropTypes.string,
   errorMessage: PropTypes.string,
   bookingMessage: PropTypes.string,
   onClickHourPanel: PropTypes.func,

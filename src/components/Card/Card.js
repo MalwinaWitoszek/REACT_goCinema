@@ -13,7 +13,7 @@ const Card = props => {
     <div className={styles.container}>
       <Alert {...props}/>
       <CardContent {...props} style={CardContentStyle} />
-      <CardFooter {...props} toPath="movie/1" buttonText="rezerwuj" />
+      <CardFooter {...props} toPath={`movie/${props['_id']}`} buttonText="rezerwuj" />
     </div>
   );
 };

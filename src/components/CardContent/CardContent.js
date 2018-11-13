@@ -37,11 +37,11 @@ CardContent.defaultProps = {
 };
 
 CardContent.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  style: PropTypes.object.isRequired,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  releaseDate: PropTypes.string,
+  description: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default CardContent;

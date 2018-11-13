@@ -75,7 +75,7 @@ class CardsList extends Component {
   fetchMovies = async () => {
     this.setState({ loading: true });
     try {
-      const response = await axios.get(`${api.url}/movie`);
+      const response = await axios.get(`${api.url}/movies`);
       this.setState({
         loading: false,
         movies: response.data
@@ -86,7 +86,6 @@ class CardsList extends Component {
   };
 
   render() {
-    console.log(this.state.movies);
     const { movies, loading, isError } = this.state;
 
     if (loading) {
