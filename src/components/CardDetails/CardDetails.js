@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import axios from 'axios'
 import CardContent from "../CardContent/CardContent";
 import BookingForm from "../BookingForm/BookingForm";
 import styles from "./CardDetails.module.scss";

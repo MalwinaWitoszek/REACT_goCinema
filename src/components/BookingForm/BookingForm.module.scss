@@ -22,13 +22,18 @@
 .activeSeance {
   background-color: rgb(167, 164, 164);
   color: black;
-}.alertBookingContainer {
+}
+.alertBookingContainer {
   position: static;
   min-height: 1.5rem;
   margin: 20px 0;
   padding-top: 15px;
   background-color: #070707;
 
+}
+.alertBookingMessage {
+  font-size: .75rem;
+  text-transform: uppercase;
 }
 input{
   background-color: #ccc;
@@ -38,10 +43,7 @@ input{
   border-radius: 2px;
   width: 50%;
 }
-.alertBookingMessage {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
+
 .buttonConfirmBookingContainer{
   display: flex;
   flex-direction: column;

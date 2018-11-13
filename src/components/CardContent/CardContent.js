@@ -1,25 +1,26 @@
 import React from "react";
 import RunningTime from "../RunningTime/RunningTime";
 import PropTypes from "prop-types";
+import { formatDate } from '../../utils'
 import styles from "./CardContent.module.scss";
 
-const CardContent = ({ img, title, releaseDate, desc, style, ...restProps }) => {
+const CardContent = ({ image, title, releaseDate, description, style, ...restProps }) => {
   return (
     <div className={styles.container} style={style}>
       <div className={styles.posterContainer}>
-        <img src={img} className={styles.filmPoster} alt="plakat filmowy" />
+        <img src={image} className={styles.filmPoster} alt="plakat filmowy" />
       </div>
       <div className={styles.infoContainer}>
         <header>
           <h3>{title}</h3>
           <p className={styles.releaseDate}>
-            <span>Premiera: </span> {releaseDate} r.
+            <span>Premiera: </span> {formatDate (releaseDate)} r.
           </p>
         </header>
         <RunningTime {...restProps} />
         <p>
           <span>Opis: </span>
-          {desc}
+          {description}
         </p>
       </div>
     </div>
@@ -28,18 +29,18 @@ const CardContent = ({ img, title, releaseDate, desc, style, ...restProps }) => 
 
 CardContent.defaultProps = {
   title: "Brak tytułu",
-  releaseDate: "Nieznana" ,
-  desc: "Brak opisu",
+  releaseDate: "-" ,
+  description: "Brak opisu",
   style: {
     marginBottom: '0.65rem'
   }
 };
 
 CardContent.propTypes = {
-  img: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   style: PropTypes.object.isRequired,
 };
 

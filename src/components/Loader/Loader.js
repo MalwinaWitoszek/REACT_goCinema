@@ -3,7 +3,7 @@ import styles from './Loader.module.scss';
 
 const Loader = () => (
     <div className={styles.loader}>
-        <p> wczytuję ...</p>
+        <p> Wczytuję dane...</p>
     </div>
 );
 

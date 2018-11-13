@@ -5,3 +5,16 @@
   flex-wrap: wrap;
   margin: 35px auto;
 }
+.alertBookingContainer {
+  position: static;
+  width: 50vw;
+  min-height: 1.5rem;
+  margin: 70px auto;
+  padding-top: 15px;
+  background-color: #070707;
+
+}
+.alertBookingMessage {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
