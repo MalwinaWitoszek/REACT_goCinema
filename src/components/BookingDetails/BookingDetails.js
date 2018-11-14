@@ -23,9 +23,9 @@ const BookingDetails = ({ numberOfSeats, hourOfSeance, onClickDeleteBooking }) =
 };
 
 BookingDetails.propTypes = {
-  numberOfSeats: PropTypes.number.isRequired,
-  hourOfSeance: PropTypes.string.isRequired,
-  onClickDeleteBooking: PropTypes.func.isRequired,
+  numberOfSeats: PropTypes.number,
+  hourOfSeance: PropTypes.string,
+  onClickDeleteBooking: PropTypes.func,
 };
 
 export default BookingDetails;

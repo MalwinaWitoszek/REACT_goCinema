@@ -1,16 +1,17 @@
 import React from "react";
 import CardContent from "../CardContent/CardContent";
 import BookingDetails from "../BookingDetails/BookingDetails";
+import { formatTime } from '../../utils'
 import PropTypes from "prop-types";
 import styles from "./BookingCard.module.scss";
 
-const BookingCard = ({numberOfSeats,hourOfSeance, onClickDeleteBooking, ...restBooking}) => {
+const BookingCard = ({reservedSetas, reservedTime, onClickDeleteBooking, ...restBooking}) => {
   return (
     <div className={styles.container}>
       <CardContent {...restBooking} />
       <BookingDetails
-        numberOfSeats={numberOfSeats}
-        hourOfSeance={hourOfSeance}
+        numberOfSeats={reservedSetas}
+        hourOfSeance={formatTime(reservedTime)}
         onClickDeleteBooking={onClickDeleteBooking}
       />
     </div>
@@ -18,9 +19,9 @@ const BookingCard = ({numberOfSeats,hourOfSeance, onClickDeleteBooking, ...restB
 };
 
 BookingCard.propTypes = {
-  numberOfSeats: PropTypes.number.isRequired,
-  hourOfSeance: PropTypes.string.isRequired,
-  onClickDeleteBooking: PropTypes.func.isRequired,
+  numberOfSeats: PropTypes.number,
+  hourOfSeance: PropTypes.string,
+  onClickDeleteBooking: PropTypes.func,
 };
 
 export default BookingCard;

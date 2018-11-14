@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "../Card/Card";
-import Alert from "../Alert/Alert";
+import AlertFetchFail from "../AlertFetchFail/AlertFetchFail";
 import Loader from "../Loader/Loader";
 import axios from "axios";
 import { isEmpty } from "lodash";
@@ -86,23 +86,14 @@ class CardsList extends Component {
   };
 
   render() {
-    const { movies, loading, isError } = this.state;
+    const { movies, loading, } = this.state;
 
     if (loading) {
       return <Loader />;
     }
 
     if (isEmpty(movies)) {
-      return (
-        <Alert
-          alert={{
-            message: "nie udało się pobrać danych...",
-            type: "error"
-          }}
-          extraStyleContainer={styles.alertBookingContainer}
-          extraStyleMessage={styles.alertBookingMessage}
-        />
-      );
+      return  <AlertFetchFail />
     }
 
 

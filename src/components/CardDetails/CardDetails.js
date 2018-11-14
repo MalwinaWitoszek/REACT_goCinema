@@ -3,7 +3,11 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import CardContent from "../CardContent/CardContent";
 import BookingForm from "../BookingForm/BookingForm";
+import Loader from '../Loader/Loader'
+import AlertFetchFail from '../AlertFetchFail/AlertFetchFail'
 import { api } from "../../config";
+import { isEmpty } from 'lodash'
+import { formatTime } from '../../utils'
 import styles from "./CardDetails.module.scss";
 
 class CardDetails extends Component {
@@ -50,7 +54,7 @@ class CardDetails extends Component {
     isSendingData: false,
     movie: {},
     seancesHours: [],
-    numberOfSeats: null,
+    numberOfSeats: '',
     hourOfSeance: null,
     errorMessage: null,
     bookingMessage: null
@@ -60,6 +64,7 @@ class CardDetails extends Component {
     this.fetchMovie();
   }
 
+  // FETCH MOVIE
   fetchMovie = async () => {
     const { params } = this.props.match;
     this.setState({ loading: true });
@@ -76,36 +81,39 @@ class CardDetails extends Component {
     }
   };
 
-  addBooking = async data => {
-    this.setState({ isSendingData: true });
-    try {
-      this.setState({ isSendingData: false });
-      await axios.post(`${api.url}/bookings`, data);
-      alert("wysłano");
-      this.props.history.push("/bookings/7");
-    } catch (error) {
-      this.setState({ isSendingData: false });
-      console.warn("błąd", error);
-    }
-  };
-
+  //CHOOSE HOUR OF SEANCE
   onClickHourPanel = seance => {
     this.setState({
       hourOfSeance: seance
     });
   };
 
+  //CHOOSE NUMBER OF SEATS
   onChangeInputSeats = e => {
     this.setState({
       numberOfSeats: e.target.value
     });
   };
 
+  //POST NEW BOOKING
+  addBooking = async data => {
+    this.setState({ isSendingData: true });
+    try {
+      this.setState({ isSendingData: false });
+      await axios.post(`${api.url}/bookings`, data);
+      alert("rezerwacja zakoczona sukcesem");
+      this.props.history.push("/bookings/7");
+    } catch (error) {
+      this.setState({ isSendingData: false });
+      console.warn("rezerwacja się nie udała", error);
+    }
+  };
+
+  //SUBMIT BOOKING FORM AND ADD NEW BOOKING
   onSubmitFormBooking = e => {
     e.preventDefault();
     const { params } = this.props.match;
     const { numberOfSeats, hourOfSeance } = this.state;
-    console.log("miejsca", numberOfSeats, "godz", hourOfSeance);
     // checking if the hour of seance and number of seats have been given
     if (!hourOfSeance && !numberOfSeats) {
       return this.setState({
@@ -128,9 +136,10 @@ class CardDetails extends Component {
     });
     // setting bookingMessage when everything was given
     this.setState({
-      bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${hourOfSeance}`
+      bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${formatTime(hourOfSeance)}`
     });
 
+    // preparing data to post after submit
     const bookingData = {
       movieId: params.id,
       reservedSetas: numberOfSeats,
@@ -138,15 +147,36 @@ class CardDetails extends Component {
       userId: 7
     };
 
+    // posting new booking with prepared data
     this.addBooking(bookingData);
   };
 
   render() {
-    const { movie, seancesHours, hourOfSeance } = this.state;
+    const {
+      loading,
+      movie,
+      seancesHours,
+      hourOfSeance,
+      numberOfSeats,
+      errorMessage,
+      bookingMessage
+    } = this.state;
+
+    if(loading){
+      return <Loader />
+    }
+
+    if (isEmpty(movie)) {
+      return  <AlertFetchFail />
+    }
+
     return (
       <div className={styles.container}>
         <CardContent {...movie} />
         <BookingForm
+          numberOfSeats={numberOfSeats}
+          errorMessage={errorMessage}
+          bookingMessage={bookingMessage}
           seancesHours={seancesHours}
           activeSeance={hourOfSeance}
           extraStyle={styles.BookingFormWrapper}
