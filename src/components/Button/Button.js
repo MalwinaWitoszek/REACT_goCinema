@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 
-const Button = ({ soldedOut, text, onClickButton, extraStyle, extraStyleContainer, navButton }) => {
+const Button = ({ disabledButton, soldedOut, text, onClickButton, extraStyle, extraStyleContainer, navButton }) => {
   return (
     <div className={`${styles.container} ${extraStyleContainer}`}>
         {soldedOut ? (
@@ -10,7 +10,9 @@ const Button = ({ soldedOut, text, onClickButton, extraStyle, extraStyleContaine
       ) : navButton ? (
         navButton
       ) : (
+
         <button
+          disabled = {disabledButton}
           className={`${styles.button} ${extraStyle}`}
           onClick={onClickButton}
         >

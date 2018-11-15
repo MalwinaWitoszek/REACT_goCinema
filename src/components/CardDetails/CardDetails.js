@@ -105,7 +105,6 @@ class CardDetails extends Component {
   addBooking = async data => {
     this.setState({ isSendingData: true });
     try {
-      this.setState({ isSendingData: false });
       await axios.post(`${api.url}/bookings`, data);
       this.setState({
         showAlert: true,
@@ -113,6 +112,7 @@ class CardDetails extends Component {
         isReservationDone: true
       });
       setTimeout(() => {
+        this.setState({ isSendingData: false });
         this.props.history.push("/bookings/7");
       }, 2800);
     } catch (error) {
