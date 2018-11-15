@@ -12,6 +12,7 @@ const BookingForm = ({
   activeSeance,
   errorMessage,
   // soldetOut,
+  isReservationDone,
   bookingMessage,
   extraStyle,
   onClickHourPanel,
@@ -68,7 +69,7 @@ const BookingForm = ({
           extraStyleMessage={styles.alertBookingMessage}
         />
       )}
-      {bookingMessage && (
+      {isReservationDone && bookingMessage && (
         <Alert
           alert={{
             message: bookingMessage,

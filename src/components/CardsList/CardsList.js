@@ -82,6 +82,7 @@ class CardsList extends Component {
       });
     } catch (error) {
       this.setState({ loading: false});
+      console.warn('pobranie danych nie powiodło się')
     }
   };
 

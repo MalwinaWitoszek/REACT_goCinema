@@ -1,0 +1,37 @@
+.container {
+  visibility: hidden;
+  min-width: 400px;
+  margin-left: -200px; /* Divide value of min-width by 2 */
+  position: fixed;
+  z-index: 1;
+  left: 50vw;
+  top: 20vh;
+}
+.containerShow {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+.alertBookingContainer {
+  position: static;
+  min-height: 1.5rem;
+  margin: 20px 0;
+  padding-top: 15px;
+  background-color: #070707;
+  border-width: 4px;
+  border-radius: 0;
+}
+.alertBookingMessage {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/* Animations to fade the alert in and out */
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 20vh; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {top: 20vh; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}

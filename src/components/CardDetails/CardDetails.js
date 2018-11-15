@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
-import CardContent from "../CardContent/CardContent";
-import BookingForm from "../BookingForm/BookingForm";
-import Loader from '../Loader/Loader'
-import AlertFetchFail from '../AlertFetchFail/AlertFetchFail'
-import { api } from "../../config";
-import { isEmpty } from 'lodash'
-import { formatTime } from '../../utils'
-import styles from "./CardDetails.module.scss";
+import axios from 'axios';
+import { isEmpty } from 'lodash';
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+
+import { api } from '../../config';
+import { formatTime } from '../../utils';
+import AlertDisappearing from '../AlertDisappearing/AlertDisappearing';
+import AlertFetchFail from '../AlertFetchFail/AlertFetchFail';
+import BookingForm from '../BookingForm/BookingForm';
+import CardContent from '../CardContent/CardContent';
+import Loader from '../Loader/Loader';
+import styles from './CardDetails.module.scss';
 
 class CardDetails extends Component {
   // state = {
@@ -52,9 +54,13 @@ class CardDetails extends Component {
   state = {
     loading: false,
     isSendingData: false,
+    isReservationDone: false,
+    showAlert: false,
+    alertMessage: "",
+    alertType: 'success',
     movie: {},
     seancesHours: [],
-    numberOfSeats: '',
+    numberOfSeats: "",
     hourOfSeance: null,
     errorMessage: null,
     bookingMessage: null
@@ -77,7 +83,7 @@ class CardDetails extends Component {
       });
     } catch (error) {
       this.setState({ loading: false });
-      console.warn("blad", error);
+      console.warn("pobranie danych nie powiodło się");
     }
   };
 
@@ -97,15 +103,29 @@ class CardDetails extends Component {
 
   //POST NEW BOOKING
   addBooking = async data => {
+    const { params } = this.props.match;
     this.setState({ isSendingData: true });
     try {
       this.setState({ isSendingData: false });
       await axios.post(`${api.url}/bookings`, data);
-      alert("rezerwacja zakoczona sukcesem");
-      this.props.history.push("/bookings/7");
+      this.setState({
+        showAlert: true,
+        alertMessage: "rezerwacja została wykonana!",
+        isReservationDone: true,
+      });
+      setTimeout(() => {
+        this.props.history.push("/bookings/7");
+      }, 2800);
     } catch (error) {
-      this.setState({ isSendingData: false });
-      console.warn("rezerwacja się nie udała", error);
+      this.setState({
+        isSendingData: false,
+        showAlert: true,
+        alertMessage: "rerezwacja się nie udała, spróbuj ponownie",
+        alertType: "error"
+      });
+      setTimeout(() => {
+        this.props.history.push(`/movies`);
+      }, 2800);
     }
   };
 
@@ -134,10 +154,12 @@ class CardDetails extends Component {
     this.setState({
       errorMessage: null
     });
-    // setting bookingMessage when everything was given
-    this.setState({
-      bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${formatTime(hourOfSeance)}`
-    });
+        // setting bookingMessage when everything was given
+        this.setState({
+          bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${formatTime(
+            hourOfSeance
+          )}`
+        });
 
     // preparing data to post after submit
     const bookingData = {
@@ -149,11 +171,16 @@ class CardDetails extends Component {
 
     // posting new booking with prepared data
     this.addBooking(bookingData);
+
   };
 
   render() {
     const {
       loading,
+      showAlert,
+      alertMessage,
+      isReservationDone,
+      alertType,
       movie,
       seancesHours,
       hourOfSeance,
@@ -162,20 +189,26 @@ class CardDetails extends Component {
       bookingMessage
     } = this.state;
 
-    if(loading){
-      return <Loader />
+    if (loading) {
+      return <Loader />;
     }
 
     if (isEmpty(movie)) {
-      return  <AlertFetchFail />
+      return <AlertFetchFail />;
     }
 
     return (
       <div className={styles.container}>
+        <AlertDisappearing
+          showAlertContainer={showAlert}
+          message={alertMessage}
+          type={alertType}
+        />
         <CardContent {...movie} />
         <BookingForm
           numberOfSeats={numberOfSeats}
           errorMessage={errorMessage}
+          isReservationDone={isReservationDone}
           bookingMessage={bookingMessage}
           seancesHours={seancesHours}
           activeSeance={hourOfSeance}

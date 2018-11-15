@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 import BookingCard from "../BookingCard/BookingCard";
-import Loader from '../Loader/Loader'
-import AlertFetchFail from '../AlertFetchFail/AlertFetchFail'
-import { isEmpty } from 'lodash'
-import { api } from '../../config'
+import Loader from "../Loader/Loader";
+import AlertFetchFail from "../AlertFetchFail/AlertFetchFail";
+import { isEmpty } from "lodash";
+import { api } from "../../config";
 import styles from "./BookingCardsList.module.scss";
 
 // const bookings = [
@@ -59,48 +59,55 @@ import styles from "./BookingCardsList.module.scss";
 // title: "Zimna wojna"
 // _id: "5bd41f92416a5a00166f23ef"
 
-
-
-
-
 class BookingCardsList extends Component {
   state = {
     loading: false,
-    bookings: [],
-  }
+    deleting: false,
+    bookings: []
+  };
 
   componentDidMount() {
-    this.fetchBookings()
+    this.fetchBookings();
   }
 
   fetchBookings = async () => {
     const { params } = this.props.match;
-    this.setState({loading: true})
+    this.setState({ loading: true });
+    try {
+      const response = await axios.get(
+        `${api.url}/mybookings/${params.userId}`
+      );
+      this.setState({ loading: false, bookings: response.data });
+      console.log("pobrano rezerwacje");
+    } catch (error) {
+      this.setState({ loading: false });
+      console.warn("nie udało się pobrac rezerwacji");
+    }
+  };
+
+  onClickDeleteBooking = async (bookingId) => {
+    this.setState({deleting: true})
     try{
-      const response = await axios.get(`${api.url}/mybookings/${params.userId}`)
-      this.setState({loading: false, bookings: response.data})
-      console.log('pobrano rezerwacje')
+      await axios.delete(`${api.url}/bookings/${bookingId}`)
+      alert("rezerwacja została usunięta");
+      this.setState({deleting: false})
+      this.fetchBookings();
     }catch(error){
-      this.setState({loading: false})
-      console.warn('nie udało się pobrac rezerwacji')
+    this.setState({deleting: false})
+    console.warn('usuwanie nie powiodło się')
     }
   }
 
-
-  onClickDeleteBooking = (bookingId) => {
-  console.log('usunięto: ', bookingId)
-  }
 
   render() {
     const { bookings, loading } = this.state;
 
-    if(loading){
-      return <Loader />
+    if (loading) {
+      return <Loader />;
     }
 
-
     if (isEmpty(bookings)) {
-      return  <AlertFetchFail />
+      return <AlertFetchFail />;
     }
 
     return (
@@ -110,7 +117,7 @@ class BookingCardsList extends Component {
             <BookingCard
               {...booking}
               key={booking.bookingId}
-              // onClickDeleteBooking={() => this.onClickDeleteBooking(booking.id)}
+              onClickDeleteBooking={() => this.onClickDeleteBooking(booking.bookingId)}
             />
           );
         })}
