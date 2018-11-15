@@ -212,6 +212,7 @@ class CardDetails extends Component {
           bookingMessage={bookingMessage}
           seancesHours={seancesHours}
           activeSeance={hourOfSeance}
+          availableSetas={movie.availableSetas}
           extraStyle={styles.BookingFormWrapper}
           onClickHourPanel={this.onClickHourPanel}
           onChangeInputSeats={this.onChangeInputSeats}

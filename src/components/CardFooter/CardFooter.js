@@ -14,9 +14,7 @@ const CardFooter = ({ toPath, buttonText, ...restProps }) => {
   return (
     <div className={styles.container}>
       <RatingStars {...restProps} />
-      {/*<NavLink className={styles.link} to={toPath}>*/}
       <Button {...restProps} text={buttonText} navButton={navButton} />
-      {/*}  </NavLink>*/}
     </div>
   );
 };

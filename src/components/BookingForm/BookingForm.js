@@ -15,6 +15,7 @@ const BookingForm = ({
   // soldetOut,
   isReservationDone,
   bookingMessage,
+  availableSetas,
   extraStyle,
   onClickHourPanel,
   onChangeInputSeats,
@@ -47,6 +48,7 @@ const BookingForm = ({
           <input
             type="number"
             min="1"
+            max={availableSetas.toString()}
             name="seatsNumber"
             value={numberOfSeats}
             placeholder="0"
