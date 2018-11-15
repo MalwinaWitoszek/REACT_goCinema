@@ -3,6 +3,7 @@ import axios from "axios";
 import BookingCard from "../BookingCard/BookingCard";
 import Loader from "../Loader/Loader";
 import AlertFetchFail from "../AlertFetchFail/AlertFetchFail";
+import AlertDisappearing from "../AlertDisappearing/AlertDisappearing";
 import { isEmpty } from "lodash";
 import { api } from "../../config";
 import styles from "./BookingCardsList.module.scss";
@@ -62,7 +63,9 @@ import styles from "./BookingCardsList.module.scss";
 class BookingCardsList extends Component {
   state = {
     loading: false,
-    deleting: false,
+    showAlert: false,
+    alertMessage: "",
+    alertType: "success",
     bookings: []
   };
 
@@ -78,29 +81,53 @@ class BookingCardsList extends Component {
         `${api.url}/mybookings/${params.userId}`
       );
       this.setState({ loading: false, bookings: response.data });
-      console.log("pobrano rezerwacje");
     } catch (error) {
       this.setState({ loading: false });
       console.warn("nie udało się pobrac rezerwacji");
     }
   };
 
-  onClickDeleteBooking = async (bookingId) => {
-    this.setState({deleting: true})
-    try{
-      await axios.delete(`${api.url}/bookings/${bookingId}`)
-      alert("rezerwacja została usunięta");
-      this.setState({deleting: false})
-      this.fetchBookings();
-    }catch(error){
-    this.setState({deleting: false})
-    console.warn('usuwanie nie powiodło się')
-    }
-  }
+  onClickDeleteBooking = async bookingId => {
+    this.setState({ deleting: true });
+    try {
+      await axios.delete(`${api.url}/bookings/${bookingId}`);
+      this.setState({
+        showAlert: true,
+        alertMessage: "rezerwacja została usunięta!",
+      });
+      setTimeout(() => {
+        this.fetchBookings();
+        this.setState({
+          showAlert: false,
+          });
+      }, 2800);
 
+    } catch (error) {
+      this.setState({
+        deleting: false,
+        showAlert: true,
+        alertMessage: "rezerwacja nie została usunięta, spróbuj ponownie",
+        alertType: "error"
+      });
+      setTimeout(() => {
+        this.setState({
+          showAlert: false,
+          });
+      }, 2800);
+
+
+      console.warn("usuwanie nie powiodło się");
+    }
+  };
 
   render() {
-    const { bookings, loading } = this.state;
+    const {
+      bookings,
+      loading,
+      showAlert,
+      alertMessage,
+      alertType
+    } = this.state;
 
     if (loading) {
       return <Loader />;
@@ -112,12 +139,19 @@ class BookingCardsList extends Component {
 
     return (
       <div className={styles.container}>
+        <AlertDisappearing
+          showAlertContainer={showAlert}
+          message={alertMessage}
+          type={alertType}
+        />
         {bookings.map(booking => {
           return (
             <BookingCard
               {...booking}
               key={booking.bookingId}
-              onClickDeleteBooking={() => this.onClickDeleteBooking(booking.bookingId)}
+              onClickDeleteBooking={() =>
+                this.onClickDeleteBooking(booking.bookingId)
+              }
             />
           );
         })}

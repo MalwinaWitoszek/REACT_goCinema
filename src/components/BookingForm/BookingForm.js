@@ -11,6 +11,7 @@ const BookingForm = ({
   numberOfSeats,
   activeSeance,
   errorMessage,
+  isSendingData,
   // soldetOut,
   isReservationDone,
   bookingMessage,
@@ -54,6 +55,7 @@ const BookingForm = ({
         </div>
         <Button
           type="submit"
+          disabledButton={isSendingData}
           // soldetOut={soldetOut}
           extraStyleContainer={styles.buttonConfirmBookingContainer}
           extraStyle={styles.buttonConfirmBooking}
@@ -89,6 +91,7 @@ BookingForm.propTypes = {
   numberOfSeats: PropTypes.string,
   activeSeance: PropTypes.string,
   errorMessage: PropTypes.string,
+  isReservationDone: PropTypes.bool,
   bookingMessage: PropTypes.string,
   onClickHourPanel: PropTypes.func,
   onChangeInputSeats: PropTypes.func,

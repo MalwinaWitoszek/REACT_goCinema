@@ -1,16 +1,16 @@
-import axios from 'axios';
-import { isEmpty } from 'lodash';
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import axios from "axios";
+import { isEmpty } from "lodash";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
-import { api } from '../../config';
-import { formatTime } from '../../utils';
-import AlertDisappearing from '../AlertDisappearing/AlertDisappearing';
-import AlertFetchFail from '../AlertFetchFail/AlertFetchFail';
-import BookingForm from '../BookingForm/BookingForm';
-import CardContent from '../CardContent/CardContent';
-import Loader from '../Loader/Loader';
-import styles from './CardDetails.module.scss';
+import { api } from "../../config";
+import { formatTime } from "../../utils";
+import AlertDisappearing from "../AlertDisappearing/AlertDisappearing";
+import AlertFetchFail from "../AlertFetchFail/AlertFetchFail";
+import BookingForm from "../BookingForm/BookingForm";
+import CardContent from "../CardContent/CardContent";
+import Loader from "../Loader/Loader";
+import styles from "./CardDetails.module.scss";
 
 class CardDetails extends Component {
   // state = {
@@ -57,7 +57,7 @@ class CardDetails extends Component {
     isReservationDone: false,
     showAlert: false,
     alertMessage: "",
-    alertType: 'success',
+    alertType: "success",
     movie: {},
     seancesHours: [],
     numberOfSeats: "",
@@ -103,7 +103,6 @@ class CardDetails extends Component {
 
   //POST NEW BOOKING
   addBooking = async data => {
-    const { params } = this.props.match;
     this.setState({ isSendingData: true });
     try {
       this.setState({ isSendingData: false });
@@ -111,7 +110,7 @@ class CardDetails extends Component {
       this.setState({
         showAlert: true,
         alertMessage: "rezerwacja została wykonana!",
-        isReservationDone: true,
+        isReservationDone: true
       });
       setTimeout(() => {
         this.props.history.push("/bookings/7");
@@ -120,7 +119,7 @@ class CardDetails extends Component {
       this.setState({
         isSendingData: false,
         showAlert: true,
-        alertMessage: "rerezwacja się nie udała, spróbuj ponownie",
+        alertMessage: "rezerwacja się nie udała, spróbuj ponownie",
         alertType: "error"
       });
       setTimeout(() => {
@@ -154,12 +153,12 @@ class CardDetails extends Component {
     this.setState({
       errorMessage: null
     });
-        // setting bookingMessage when everything was given
-        this.setState({
-          bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${formatTime(
-            hourOfSeance
-          )}`
-        });
+    // setting bookingMessage when everything was given
+    this.setState({
+      bookingMessage: `ilość zarezerwowanych miejsc: ${numberOfSeats}, godzina seansu: ${formatTime(
+        hourOfSeance
+      )}`
+    });
 
     // preparing data to post after submit
     const bookingData = {
@@ -171,12 +170,12 @@ class CardDetails extends Component {
 
     // posting new booking with prepared data
     this.addBooking(bookingData);
-
   };
 
   render() {
     const {
       loading,
+      isSendingData,
       showAlert,
       alertMessage,
       isReservationDone,
@@ -208,6 +207,7 @@ class CardDetails extends Component {
         <BookingForm
           numberOfSeats={numberOfSeats}
           errorMessage={errorMessage}
+          isSendingData={isSendingData}
           isReservationDone={isReservationDone}
           bookingMessage={bookingMessage}
           seancesHours={seancesHours}
