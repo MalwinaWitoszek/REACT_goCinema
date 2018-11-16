@@ -8,57 +8,6 @@ import { isEmpty } from "lodash";
 import { api } from "../../config";
 import styles from "./BookingCardsList.module.scss";
 
-// const bookings = [
-//   {
-//     title: "First Man",
-//     releaseDate: "18.10.2018",
-//     desc:
-//       "Fragment życia astronauty Neila Armstronga i jego legendarnej misji kosmicznej, dzięki której jako pierwszy człowiek stanął na Księżycu.",
-//     duration: 8460,
-//     img: "https://i.imgur.com/0oo7XJc.jpg",
-//     rating: 4,
-//     ratingDesc: true,
-//     allowClear: true,
-//     soldedOut: false,
-//     alert: {
-//       message: "Nowość!",
-//       type: "success"
-//     },
-//     id: 1,
-//     numberOfSeats: 2,
-//     hourOfSeance: "17.30"
-//   },
-//   {
-//     title: "American Animals",
-//     releaseDate: "01.09.2018",
-//     desc:
-//       "Wracając od kolegi, Will zauważa coś przerażającego. Pobliskie laboratorium rządowe skrywa złowrogą tajemnicę. Ogólnie jest nie za wesoło," +
-//       " ale wszystko kończy się dobrze i żyją długo i szczęśliwie.",
-//     duration: 3200,
-//     img: "https://i.imgur.com/3koreob.jpg",
-//     rating: 3,
-//     ratingDesc: false,
-//     allowClear: false,
-//     soldedOut: true,
-//     alert: {
-//       message: "Wyprzedane",
-//       type: "error"
-//     },
-//     id: 2,
-//     numberOfSeats: 1,
-//     hourOfSeance: "20.00"
-//   }
-// ];
-
-// bookingId: "5be6d4996722160016d99c2c"
-// description: "Historia wielkiej i trudnej miłości dwojga ludzi, którzy nie potrafią być ze sobą i jednocześnie nie mogą bez siebie żyć. W tle wydarzenia zimnej wojny lat 50. w Polsce, Berlinie, Jugosławii i Paryżu."
-// duration: 140
-// image: "https://ssl-gfx.filmweb.pl/po/40/39/764039/7860650.3.jpg"
-// releaseDate: "Thu Oct 18 2018 08:04:53 GMT+0000 (Coordinated Universal Time)"
-// reservedSetas: 2
-// reservedTime: "2018-11-09T21:05:00+00:00"
-// title: "Zimna wojna"
-// _id: "5bd41f92416a5a00166f23ef"
 
 class BookingCardsList extends Component {
   state = {

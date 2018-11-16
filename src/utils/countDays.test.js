@@ -6,8 +6,9 @@ describe('countDays util',() => {
     expect(countDays()).toBe(expected)
   })
   it('should return counted number of days',() => {
-    const expected = 5;
-    expect(countDays('2018-11-10T08:04:53.000Z')).toBe(expected)
+    const expected = 0;
+    const today = new Date();
+    expect(countDays(today)).toBe(expected)
   })
 
 })
