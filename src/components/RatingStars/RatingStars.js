@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./RatingStars.module.scss";
 
-const ratingDescription = {
+export const ratingDescription = {
   null: "Zagłosuj!",
   0: "Zagłosuj!",
   1: "Totalna porażka",
@@ -76,6 +76,7 @@ class RatingStars extends Component {
           onClick={() => this.onClickHandler(star)}
           onMouseOver={() => this.onMouseOverHandler(star)}
           onMouseOut={this.onMouseOutHandler}
+          data-test="star"
         >
           &#10032;
         </span>
@@ -88,8 +89,8 @@ class RatingStars extends Component {
         <div className={styles.starsContainer}> {stars}</div>
         {/*displaying rating description depending on prop ratingDesc(true or false) */}
         {ratingDesc && (
-          <div className={styles.ratingDescription}>
-            ( {ratingDescription[this.state.rating]} )
+          <div className={styles.ratingDescription} data-test="description">
+             {ratingDescription[this.state.rating]}
           </div>
         )}
       </div>
